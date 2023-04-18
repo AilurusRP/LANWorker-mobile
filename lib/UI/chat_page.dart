@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lan_worker/API/send_msg.dart';
 import 'package:lan_worker/UI/pages/scan_page.dart';
 import 'package:lan_worker/UI/widgets/msg_editor.dart';
 import 'package:lan_worker/UI/widgets/msg_list.dart';
@@ -21,12 +22,15 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => initIp(context));
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => _initSSEClient(context));
   }
 
-  initIp(context) async {
-    ip = await ScanPage.navigatorPush(context);
-    print("ip: $ip");
+  _initSSEClient(context) async {
+    var _ip = await ScanPage.navigatorPush(context);
+    setState(() {
+      ip = _ip;
+    });
     if (ip == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No valid IP address found!"),
@@ -38,11 +42,10 @@ class _ChatPageState extends State<ChatPage> {
         header: {"Accept": "text/event-stream"},
         onMessage: (data) {
           setState(() {
-            _msgListData.add(MsgItemData(data));
-            print("??????????????????");
+            _msgListData.add(MsgItemData(data, MsgSender.desktop));
             Future.delayed(Duration.zero).then((value) {
               _msgListController
-                  .jumpTo(_msgListController.position.maxScrollExtent + 80);
+                  .jumpTo(_msgListController.position.maxScrollExtent + 1800);
             });
           });
         });
@@ -55,7 +58,18 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           MsgList(_msgListData, controller: _msgListController),
-          MsgEditor()
+          MsgEditor(
+            onSendMsg: (text) {
+              sendMsg(ip!, text);
+              setState(() {
+                _msgListData.add(MsgItemData(text, MsgSender.self));
+                Future.delayed(Duration.zero).then((value) {
+                  _msgListController.jumpTo(
+                      _msgListController.position.maxScrollExtent + 1800);
+                });
+              });
+            },
+          )
         ],
       ),
     );

@@ -1,4 +1,7 @@
+enum MsgSender { self, desktop }
+
 class MsgItemData {
   final String content;
-  MsgItemData(this.content);
+  final MsgSender sender;
+  MsgItemData(this.content, this.sender);
 }

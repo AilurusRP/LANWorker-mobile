@@ -8,8 +8,12 @@ class MsgItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        alignment: Alignment.centerLeft,
-        padding: const EdgeInsets.fromLTRB(15, 15, 55, 15),
+        alignment: data.sender == MsgSender.self
+            ? Alignment.centerRight
+            : Alignment.centerLeft,
+        padding: data.sender == MsgSender.self
+            ? const EdgeInsets.fromLTRB(55, 15, 15, 15)
+            : const EdgeInsets.fromLTRB(15, 15, 55, 15),
         child: Container(
             decoration: BoxDecoration(
                 color: const Color(0xFF795548),

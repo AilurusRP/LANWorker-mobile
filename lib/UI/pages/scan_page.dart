@@ -33,7 +33,6 @@ class _ScanPageState extends State<ScanPage> {
         onDetect: (capture) {
           final List<Barcode> barcodes = capture.barcodes;
           for (final barcode in barcodes) {
-            debugPrint('Barcode found! ${barcode.rawValue}');
             Navigator.pop(context, barcode.rawValue);
           }
         },

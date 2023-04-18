@@ -15,8 +15,7 @@ class MsgList extends StatefulWidget {
 class _MsgListState extends State<MsgList> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 500,
+    return Expanded(
         child: ListView(
           controller: widget.controller,
           children:
