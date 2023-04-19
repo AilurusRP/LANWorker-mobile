@@ -19,7 +19,7 @@ class MsgItem extends StatelessWidget {
                 color: const Color(0xFF795548),
                 borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            child: Text(
+            child: SelectableText(
               data.content,
               style: const TextStyle(
                   color: Colors.white, fontSize: 16, height: 1.2),

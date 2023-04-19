@@ -27,8 +27,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: themeColor,
-      ),
+          primarySwatch: themeColor,
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionColor: Colors.blue,
+          )),
       home: const ChatPage(),
     );
   }
