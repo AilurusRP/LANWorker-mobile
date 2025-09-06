@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lan_worker/utils/wrapped_mobile_scanner.dart';
+import 'package:lanworker_mobile/utils/wrapped_mobile_scanner.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class ScanPage extends StatefulWidget {

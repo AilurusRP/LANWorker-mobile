@@ -1,4 +1,4 @@
-# lan_worker
+# lanworker_mobile
 
 A new Flutter project.
 

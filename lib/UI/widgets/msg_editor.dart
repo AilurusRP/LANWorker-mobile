@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lan_worker/API/send_msg.dart';
+import 'package:lanworker_mobile/API/send_msg.dart';
 
 class MsgEditor extends StatefulWidget {
   MsgEditor({Key? key, required this.onSendMsg}) : super(key: key);

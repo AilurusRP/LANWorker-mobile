@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lan_worker/API/send_msg.dart';
-import 'package:lan_worker/UI/pages/scan_page.dart';
-import 'package:lan_worker/UI/widgets/msg_editor.dart';
-import 'package:lan_worker/UI/widgets/msg_list.dart';
-import 'package:lan_worker/utils/extended_sse_client.dart';
+import 'package:lanworker_mobile/API/send_msg.dart';
+import 'package:lanworker_mobile/UI/pages/scan_page.dart';
+import 'package:lanworker_mobile/UI/widgets/msg_editor.dart';
+import 'package:lanworker_mobile/UI/widgets/msg_list.dart';
+import 'package:lanworker_mobile/utils/extended_sse_client.dart';
 
 import '../API/VO/msg_item_data.dart';
 
