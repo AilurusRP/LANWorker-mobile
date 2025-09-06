@@ -15,7 +15,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  String? ip;
+  String? url;
   final List<MsgItemData> _msgListData = [];
   final _msgListController = ScrollController();
 
@@ -27,18 +27,18 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   _initSSEClient(context) async {
-    var _ip = await ScanPage.navigatorPush(context);
+    var _url = await ScanPage.navigatorPush(context);
     setState(() {
-      ip = _ip;
+      url = _url;
     });
-    if (ip == null) {
+    if (url == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No valid IP address found!"),
       ));
     }
 
     ExtendedSSEClient.extendedSubscribeToSSE(
-        url: 'http://$ip:7684/events',
+        url: "${url!}/events",
         header: {"Accept": "text/event-stream"},
         onMessage: (data) {
           setState(() {
@@ -60,7 +60,7 @@ class _ChatPageState extends State<ChatPage> {
           MsgList(_msgListData, controller: _msgListController),
           MsgEditor(
             onSendMsg: (text) {
-              sendMsg(ip!, text);
+              sendMsg(url!, text);
               setState(() {
                 _msgListData.add(MsgItemData(text, MsgSender.self));
                 Future.delayed(Duration.zero).then((value) {

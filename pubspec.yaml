@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   mobile_scanner: ^3.2.0
   flutter_client_sse: ^1.0.0
+  http: any
 
 dev_dependencies:
   flutter_test:
