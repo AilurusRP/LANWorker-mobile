@@ -6,7 +6,7 @@ void main() {
   runApp(const MyApp());
 }
 
-MaterialColor themeColor = MaterialColor(0xFF795548, <int, Color>{
+MaterialColor themeColor = const MaterialColor(0xFF795548, <int, Color>{
   50: Color(0xFF795548),
   100: Color(0xFF795548),
   200: Color(0xFF795548),
